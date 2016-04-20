@@ -1,2 +1,2 @@
-# dse-cookbook
-Datastax Enterprise Installation using Chef Automation
+# chef-recipes
+Sample recipes for Chef Automation
