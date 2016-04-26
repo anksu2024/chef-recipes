@@ -31,4 +31,3 @@ knife node run_list add <FQDN_Unique_Identity_of_Node> "recipe[kafka]"
 License and Authors
 -------------------
 <b>Authors:</b> Ankit Sarraf<br/>
-<b>Organization:</b> Cloudwick
