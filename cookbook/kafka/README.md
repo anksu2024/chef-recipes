@@ -1,68 +1,34 @@
 kafka Cookbook
 ==============
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
-
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-#### packages
-- `toaster` - kafka needs toaster to brown your bagel.
+This cookbook automates the installation of Kafka on client node
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
+There are 3 attributes (attributes/default.rb) that are used in this cookbook:
+<pre>
+default["kafka"]["version"] = "kafka_2.10-0.9.0.1"
+default["kafka"]["path"] = "/usr/kafka"
+default["kafka"]["home"] = "/usr/kafka/latest"
+</pre>
+All the above attributes can be modified to suit the requirement. The description of the attributes is as follows:<br />
+- default["kafka"]["version"]: Specifies the version of Kafka that is to be installed on the client nodes. Here the version. Here it is kafka_2.10-0.9.0.1
+- default["kafka"]["path"]: Location where the Kafka Package is to be extracted on the client node.
+- default["kafka"]["home"]: Path of KAFKA_HOME enviroment variable.
 
-e.g.
-#### kafka::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['kafka']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+Files
+-----
+kafka_2.10-0.9.0.1.tgz file for installing Kafka on the client node has also been provided in the files/default location in the cookbook. This file will be copied in the location indicated by the attribute, default["kafka"]["path"]. <br/>
+Tip: When there is a need to change the version of Kafka, just replace this file with the new one and make sure respective changes are made in the value of attribute default["kafka"]["version"]
 
 Usage
 -----
 #### kafka::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
-Just include `kafka` in your node's `run_list`:
-
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[kafka]"
-  ]
-}
-```
-
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+To include this cookbook in the run_list of the nodes, use the following command:
+<pre>
+knife node run_list add <FQDN_Unique_Identity_of_Node> "recipe[kafka]"
+</pre>
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+<b>Authors:</b> Ankit Sarraf<br/>
+<b>Organization:</b> Cloudwick
