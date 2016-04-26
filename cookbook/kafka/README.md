@@ -25,7 +25,7 @@ Usage
 #### kafka::default
 To include this cookbook in the run_list of the nodes, use the following command:
 <pre>
-knife node run_list add <FQDN_Unique_Identity_of_Node> "recipe[kafka]"
+knife node run_list add <i>FQDN_Unique_Identity_of_Node</i> "recipe[kafka]"
 </pre>
 
 License and Authors
