@@ -1,0 +1,6 @@
+ops=$(bin/kafka-topics.sh --list --zookeeper <%= node["kafka"]["zookeeper"] %> | grep -Fx <%= node["kafka"]["topic"] %>)
+if [ $? -eq 1 ]
+then
+  # Topic doesn't exist. Create the topic
+  bin/kafka-topics.sh --create --zookeeper <%= node["kafka"]["zookeeper"] %> --topic '<%= node["kafka"]["topic"]%>' --partition <%= node["kafka"]["partitions"] %> --replication-factor <%= node["kafka"]["replication_factor"] %>
+fi
