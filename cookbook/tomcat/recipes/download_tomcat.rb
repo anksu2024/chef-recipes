@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Chef recipe to download tomcat
+# Recipe to download tomcat.tar.gz
 remote_file "#{node["tomcat"]["download"]["destination"]}" do
 	source "#{node["tomcat"]["download"]["source"]}"
 	owner "root"
