@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Chef Recipe to Download Tomcat Installer from Online resource
-remote_file "#{node["tomcat"]["download"]["destination"]}" do
-	source "#{node["tomcat"]["download"]["source"]}"
+# Chef Recipe to Create Shell file to set Catalina Home
+template "/etc/profile.d/catalina.sh" do
+	source "catalina_home.erb"
 	owner "root"
 	group "root"
 	mode "0755"

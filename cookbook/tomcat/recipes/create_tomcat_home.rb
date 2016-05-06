@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Recipe to create tomcat home directory
+# Chef Recipe to Create Home directory for Tomcat
 directory "#{node["tomcat"]["home"]["directory"]}" do
 	owner "root"
 	group "root"

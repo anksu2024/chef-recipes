@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Recipe to unpack the tomcat.tar.gz file
+# Chef Recipe to Unpack the Tomcat Installer
 bash "unpack_tomcat_tar" do
 	cwd "#{node["tomcat"]["home"]["directory"]}"
 	code <<-EOS

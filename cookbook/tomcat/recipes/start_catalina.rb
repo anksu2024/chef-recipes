@@ -12,11 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Chef Recipe to Download Tomcat Installer from Online resource
-remote_file "#{node["tomcat"]["download"]["destination"]}" do
-	source "#{node["tomcat"]["download"]["source"]}"
-	owner "root"
-	group "root"
-	mode "0755"
-	action :create
+# Chef Recipe to Start Catalina Service
+execute "start_catalina" do
+	cwd "#{node["tomcat"]["home"]["directory"]}/latest"
+	command "bin/startup.sh"
 end
