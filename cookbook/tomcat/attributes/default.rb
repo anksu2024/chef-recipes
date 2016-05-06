@@ -15,3 +15,4 @@
 default["tomcat"]["download"]["source"] = "http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.0.M4/bin/apache-tomcat-9.0.0.M4.tar.gz"
 default["tomcat"]["download"]["destination"] = "/opt/tomcat/tomcat.tar.gz"
 default["tomcat"]["home"]["directory"] = "/opt/tomcat"
+default["tomcat"]["version"] = "apache-tomcat-9.0.0.M4"
