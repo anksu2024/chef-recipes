@@ -1,68 +1,41 @@
 tomcat Cookbook
 ===============
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
-
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-#### packages
-- `toaster` - tomcat needs toaster to brown your bagel.
+This cookbook automates the installation and statrt up of Tomcat services on Client Node
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
+There are 4 attributes (attributes/default.rb) that are used in this cookbook:
+<pre>
+default["tomcat"]["download"]["source"] = "http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.0.M4/bin/apache-tomcat-9.0.0.M4.tar.gz"
+default["tomcat"]["download"]["destination"] = "/opt/tomcat/tomcat.tar.gz"
+default["tomcat"]["home"]["directory"] = "/opt/tomcat"
+default["tomcat"]["version"] = "apache-tomcat-9.0.0.M4"
+</pre>
 
-e.g.
+All the above attributes can be modified to suit the requirement. The description of the attributes is as follows:<br />
+- <b>default["tomcat"]["download"]["source"]:</b> Specifies the online resource location for downloading Tomcat tar file</b>
+- <b>default["tomcat"]["download"]["destination"]:</b> The download location (destination) for the tar file for tomcat.
+- <b>default["tomcat"]["home"]["directory"]:</b> Path where the Tomcat tar file is to be extracted.
+- <b>default["tomcat"]["version"]:</b> Version of the Tomcat which is being installed on the client node.
+
+Template
+--------
+<b>catalina_home.erb:</b> The template to create the file: /etc/profile.d/catalina.sh so that the CATALINA_HOME can be set on the client node.
+<b>Tip:</b> If required the version of the Tomcat can be changed by changing the values of the following attributes:
+- default["tomcat"]["download"]["source"]
+- default["tomcat"]["version"]
+
+Recipes
+-------
 #### tomcat::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['tomcat']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+To include this cookbook in the run_list of the nodes, use the following command:
+<pre>
+knife node run_list add <i>FQDN_Unique_Identity_of_Node</i> "recipe[tomcat]"
+</pre>
 
-Usage
------
-#### tomcat::default
-TODO: Write usage instructions for each cookbook.
+This recipe internally calls the sub-recipes to download and install tomcat and set the path of the CATALINA_HOME.
+Also, there is a recipe to automatically start tomcat services on the client node.
 
-e.g.
-Just include `tomcat` in your node's `run_list`:
-
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[tomcat]"
-  ]
-}
-```
-
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
-
-License and Authors
--------------------
-Authors: TODO: List authors
+License and Author
+------------------
+<b>Author:</b> Ankit Sarraf
