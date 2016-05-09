@@ -26,6 +26,6 @@ $ knife node run_list add 'FQDN_Unique_Identiy' "recipe[java::default]"
 For the convergence at client, issue the following command in the client node:
 <pre>$ chef-client</pre>
 
-License and Authors
--------------------
+License and Author
+------------------
 <b>Author:</b> Ankit Sarraf
