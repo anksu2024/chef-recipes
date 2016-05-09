@@ -1,68 +1,31 @@
 java Cookbook
 =============
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+This cookbook installs the latest version of JDK on the client nodes. This cookbook installs JDK1.8u91 on all the client nodes.
+Additionally, it also removes already existing JDK versions (including OpenJDK)
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-#### packages
-- `toaster` - java needs toaster to brown your bagel.
-
-Attributes
-----------
-TODO: List your cookbook attributes here.
-
-e.g.
-#### java::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['java']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+Before uploading the cookbook, add the latest JDK RPM "jdk-8u91-linux-x64.rpm" in the files/default directory of the cookbook
 
 Usage
 -----
-#### java::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
-Just include `java` in your node's `run_list`:
+#### Node Bootstrap
+Before creating run_list make sure the client nodes are bootstrapped from the chef-master
+<pre>
+knife bootstrap 'public_hostname_childnode' -x 'node_uname_root' -P 'password' -N 'FQDN_Unique_Identity'
+</pre>
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[java]"
-  ]
-}
-```
+#### Adding cookbook to Run List
+To include this cookbook in the run_list of the Client Node:
+<pre>
+$ knife node run_list add 'FQDN_Unique_Identiy' "recipe[java::default]"
+</pre>
 
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+#### Convergence at Client:
+For the convergence at client, issue the following command in the client node:
+<pre>$ chef-client</pre>
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+<b>Author:</b> Ankit Sarraf
