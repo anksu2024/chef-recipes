@@ -1,48 +1,14 @@
 fileremove Cookbook
 ===================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
-
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-#### packages
-- `toaster` - fileremove needs toaster to brown your bagel.
-
-Attributes
-----------
-TODO: List your cookbook attributes here.
-
-e.g.
-#### fileremove::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['fileremove']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+To automate the process of removing a File if it exists on the client node.
 
 Usage
 -----
 #### fileremove::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
-Just include `fileremove` in your node's `run_list`:
+To use this recipe, just include `fileremove` in the client node's `run_list`:
 
-```json
+```
 {
   "name":"my_node",
   "run_list": [
@@ -50,6 +16,11 @@ Just include `fileremove` in your node's `run_list`:
   ]
 }
 ```
+
+or issue the following command from the master node:
+<pre>
+$ knife node run_list add <FQDN_Unique_Identifier_of_Client_Node> "recipe[fileremove::default]"
+</pre>
 
 Contributing
 ------------
@@ -63,6 +34,6 @@ e.g.
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
-License and Authors
--------------------
-Authors: TODO: List authors
+License and Author
+------------------
+<b>Author:</b> Ankit Sarraf
