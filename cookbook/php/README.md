@@ -1,68 +1,33 @@
 php Cookbook
 ============
-TODO: Enter the cookbook description here.
+This cookbook installs and updates the php.ini file on the client nodes.
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+Files
+-----
+This cookbook comes with a file `php.ini` in the `files/default` directory of the php cookbook.
+During convergence at the client node, the above mentioned file updates the already existing file `/etc/php.ini` with an extra comment `;; THIS FILE IS EDITED BY ANKIT`
 
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+Recipes
+-------
+The cookbook comprises of only 1 recipe file:
 
-e.g.
-#### packages
-- `toaster` - php needs toaster to brown your bagel.
-
-Attributes
-----------
-TODO: List your cookbook attributes here.
-
-e.g.
 #### php::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['php']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+Upon convergence, this recipe performs 2 tasks:
+- Installs php package on the client node.
+- Updates the `/etc/php.ini` and changes its mode to `0644`
 
 Usage
 -----
-#### php::default
-TODO: Write usage instructions for each cookbook.
+To use this cookbook, include `php` in the client node's `run_list`:
 
-e.g.
-Just include `php` in your node's `run_list`:
-
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[php]"
-  ]
-}
+```
+$ knife node run_list add <FQDN_Unique_identifier_for_client_node> "recipe[php::default]"
 ```
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
+This is a public cookbook and contributions will be appreciated.
 
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
-
-License and Authors
--------------------
-Authors: TODO: List authors
+License and Author
+------------------
+<b>Author:<b> Ankit Sarraf
