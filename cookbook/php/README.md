@@ -30,4 +30,4 @@ This is a public cookbook and contributions will be appreciated.
 
 License and Author
 ------------------
-<b>Author:<b> Ankit Sarraf
+<b>Author:</b> Ankit Sarraf
